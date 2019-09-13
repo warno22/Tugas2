@@ -52,6 +52,7 @@
         <div class="container">
                 <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
+        <li class="main active"><a href="#tugas-2">Tugas 2</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
@@ -297,152 +298,55 @@ Name: 0.75, dtype: float64
 
 </code></pre>
 
-<p>Tugas 2</p>
-<pre><code>import numpy as ip
-import seaborn as sea
-import matplotlib.pyplot as mat
-from scipy import stats
-import pandas as data
-for i in range(4):
-cek1=data.read_csv("Tugas2.csv",usecols=[i])
-c= cek1.count()
-print("Jumlah sel data = ",c)
-print(" ")
-m= cek1.mean()
-print("mean = ",m)
-print(" ")
-e= cek1.median()
-print("median = ",e)
-print(" ")
-o= cek1.mode()
-print("modus = ",o)
-print(" ")
-s=cek1.std()
-print("standar deviasi =",s)
-print(" ")
-v= cek1.var()
-print("varian = ",v)
-print(" ")
-w= cek1.skew()
-print("skewwnes = ",s)
-print(" ")
-Q1= cek1.quantile(0.25)
-print("Kuartil awal = ",Q1)
-print(" ")
-Q2= cek1.quantile(0.50)
-print("Kuartil tengah = ",Q2)
-print(" ")
-Q3= cek1.quantile(0.75)
-print("Kuartil tengah = ",Q3)
-print(" ")
+<h3 id="tugas-2"><strong>Tugas 2</strong></h3>
+<p><strong>Menghitung jarak pada data</strong></p>
+<p>memanggil fungsi yang aa pada library scipy dan membaca file exel yang telah dibuat.</p>
+<pre><code class="python">from scipy import stats
+import  pandas as pd
+pd.read_csv(&quot;Tugas2.csv&quot;)
 </code></pre>
-<p>Hasil Run</p>
-<pre><code>Jumlah sel data =  14    390
-dtype: int64
 
-mean =  14    23.671282
-dtype: float64
+<p><strong>Hasil Run</strong></p>
+<pre><code>14  8   440 215 4312    8.5 70  1   plymouth fury iii
+0   14.0    8   455.0   225 4425    10.0    70  1   pontiac catalina
+1   15.0    8   390.0   190 3850    8.5 70  1   amc ambassador dpl
+2   15.0    8   383.0   170 3563    10.0    70  1   dodge challenger se
+3   14.0    8   340.0   160 3609    8.0 70  1   plymouth 'cuda 340
+4   15.0    8   400.0   150 3761    9.5 70  1   chevrolet monte carlo
+... ... ... ... ... ... ... ... ... ...
+385 27.0    4   140.0   86  2790    15.6    82  1   ford mustang gl
+386 44.0    4   97.0    52  2130    24.6    82  2   vw pickup
+387 32.0    4   135.0   84  2295    11.6    82  1   dodge rampage
+388 28.0    4   120.0   79  2625    18.6    82  1   ford ranger
+389 31.0    4   119.0   82  2720    19.4    82  1   chevy s-10
+390 rows × 9 columns
+</code></pre>
 
-median =  14    23.0
-dtype: float64
+<p><strong>Mencari jarak dengan methode Euclidia Distance</strong></p>
+<pre><code class="python">import math
+df=pd.read_csv(&quot;Tugas2.csv&quot;)
+def Euclidean(i,j):
+    hasil = 0
+    for ii in range(len(df)-1):
+        rumus = (i[ii]-j[ii])**2
+        hasil = hasil + rumus
+    return math.sqrt(hasil)
+print(&quot;M = 2&quot;)
+print(&quot;jarak kedua objek adalah :&quot;,Euclidean(df['ford mustang gl'],df['vw pickup'])
 
-modus =       14
-0  13.0
+</code></pre>
 
-standar deviasi = 14    7.814892
-dtype: float64
-
-varian =  14    61.072541
-dtype: float64
-
-skewwnes =  14    7.814892
-dtype: float64
-
-Kuartil awal =  14    17.525
-Name: 0.25, dtype: float64
-
-Kuartil tengah =  14    23.0
-Name: 0.5, dtype: float64
-
-Kuartil tengah =  14    29.0
-Name: 0.75, dtype: float64
-
-Jumlah sel data =  8    390
-dtype: int64
-
-mean =  8    5.402564
-dtype: float64
-
-median =  8    4.0
-dtype: float64
-
-modus =     8
-0  4
-
-standar deviasi = 8    1.67838
-dtype: float64
-
-varian =  8    2.81696
-dtype: float64
-
-skewwnes =  8    1.67838
-dtype: float64
-
-Kuartil awal =  8    4.0
-Name: 0.25, dtype: float64
-
-Kuartil tengah =  8    4.0
-Name: 0.5, dtype: float64
-
-Kuartil tengah =  8    6.0
-Name: 0.75, dtype: float64
-
-Jumlah sel data =  440    390
-dtype: int64
-
-mean =  440    189.947436
-dtype: float64
-
-median =  440    144.5
-dtype: float64
-
-modus =      440
-0  97.0
-
-standar deviasi = 440    102.040911
-dtype: float64
-
-varian =  440    10412.347487
-dtype: float64
-
-skewwnes =  440    102.040911
-dtype: float64
-
-Kuartil awal =  440    100.25
-Name: 0.25, dtype: float64
-
-Kuartil tengah =  440    144.5
-Name: 0.5, dtype: float64
-
-Kuartil tengah =  440    258.0
-Name: 0.75, dtype: float64
-
-Jumlah sel data =  215    390
-dtype: int64
-
-mean =  Series([], dtype: float64)
-
-median =  Series([], dtype: float64)
-
-modus =     215
-0  150
-1   90
-
-standar deviasi = Series([], dtype: float64)
-
-varian =  Series([], dtype: float64)
-
-skewwnes =  Series([], dtype: float64)
+<p><strong>Mencari jarak dengan methode manahattanDistance</strong></p>
+<pre><code class="python">import math
+df=pd.read_csv(&quot;Tugas2.csv&quot;)
+def Manahattan(i,j):
+hasil = 0
+for ii in range(len(df)-1):
+    rumus = (i[ii]-j[ii])**2
+    hasil = hasil + rumus
+return math.sqrt(hasil)
+print(&quot;M = 1&quot;)
+print(&quot;jarak kedua objek adalah :&quot;,Manahattan(df['ford mustang gl'],df['vw pickup'])
 
 </code></pre></div>
         </div>
@@ -527,5 +431,5 @@ skewwnes =  Series([], dtype: float64)
 
 <!--
 MkDocs version : 1.0.4
-Build Date UTC : 2019-09-11 15:16:57
+Build Date UTC : 2019-09-13 14:58:10
 -->
