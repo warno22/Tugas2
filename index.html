@@ -53,6 +53,17 @@
                 <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
         <li class="main active"><a href="#tugas-2">Tugas 2</a></li>
+            <li><a href="#a-cara-kerja-algoritma-k-nearest-neighbors-knn">A. Cara Kerja Algoritma K-Nearest Neighbors (KNN)</a></li>
+        <li class="main "><a href="#tugas-3">TUGAS 3</a></li>
+        <li class="main "><a href="#feature-selection">feature selection</a></li>
+        <li class="main "><a href="#entropy-menggunakan-tabel-frekuensi-dari-satu-atribut">Entropy menggunakan tabel frekuensi dari satu atribut</a></li>
+            <li><a href="#information-gain">Information Gain</a></li>
+        <li class="main "><a href="#entropy-menggunakan-tabel-frekuensi-dengan-dua-attribut">Entropy menggunakan tabel frekuensi dengan dua attribut</a></li>
+        <li class="main "><a href="#untuk-outlook">untuk outlook</a></li>
+        <li class="main "><a href="#untuk-temperature">untuk temperature</a></li>
+        <li class="main "><a href="#untuk-humidity">untuk Humidity</a></li>
+        <li class="main "><a href="#untuk-windy">untuk windy</a></li>
+            <li><a href="#hasil">HASIL</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
@@ -300,6 +311,43 @@ Name: 0.75, dtype: float64
 
 <h3 id="tugas-2"><strong>Tugas 2</strong></h3>
 <p><strong>Menghitung jarak pada data</strong></p>
+<p><strong>Pengertian, Rumus , dan Penjelasan Menghitung Jarak Pada Data</strong>   </p>
+<h4 id="a-cara-kerja-algoritma-k-nearest-neighbors-knn"><strong>A. Cara Kerja Algoritma K-Nearest Neighbors (KNN)</strong></h4>
+<p>K-nearest neighbors melakukan klasifikasi dengan proyeksi data pembelajaran pada ruang berdimensi banyak. Ruang ini dibagi menjadi bagian-bagian yang merepresentasikan kriteria data pembelajaran. Setiap data pembelajaran direpresentasikan menjadi titik-titik <strong><em>c</em></strong> pada ruang dimensi banyak.</p>
+<h5 id="klasifikasi-terdekat-nearest-neighbor-classification"><strong>Klasifikasi Terdekat (Nearest Neighbor Classification)</strong></h5>
+<p>Data baru yang diklasifikasi selanjutnya diproyeksikan pada ruang dimensi banyak yang telah memuat titik-titik c data pembelajaran. Proses klasifikasi dilakukan dengan mencari titik <strong>c</strong> terdekat dari c-baru (<em>nearest neighbor</em>)<em>.</em> Teknik pencarian tetangga terdekat yang umum dilakukan dengan menggunakan formula jarak euclidean<em>.</em> Berikut beberapa formula yang digunakan dalam algoritma knn.</p>
+<ul>
+<li>
+<h6 id="euclidean-distance"><strong>Euclidean Distance</strong></h6>
+</li>
+</ul>
+<p>Jarak Euclidean adalah formula untuk mencari jarak antara 2 titik dalam ruang dua dimensi.</p>
+<p><a href="https://www.advernesia.com/wp-content/uploads/2018/05/euclidean.png"><img alt="euclidean" src="https://www.advernesia.com/wp-content/uploads/2018/05/euclidean.png" /></a></p>
+<ul>
+<li>
+<h6 id="hamming-distance"><strong>Hamming Distance</strong></h6>
+</li>
+</ul>
+<p>Jarak Hamming adalah cara mencari jarak antar 2 titik yang dihitung dengan panjang vektor biner yang dibentuk oleh dua titik tersebut dalam block kode biner.</p>
+<ul>
+<li>
+<h6 id="manhattan-distance"><strong>Manhattan Distance</strong></h6>
+</li>
+</ul>
+<p>Manhattan Distance atau Taxicab Geometri adalah formula untuk mencari jarak <strong>d</strong> antar 2 vektor <strong><em>p,q</em></strong> pada ruang dimensi <strong>n</strong><em>.</em></p>
+<ul>
+<li>
+<h6 id="minkowski-distance"><strong>Minkowski Distance</strong></h6>
+</li>
+</ul>
+<p>Minkowski distance adalah formula pengukuran antar 2 titik pada ruang vektor normal yang merupakan hibridisasi yang mengeneralisasi euclidean distance dan mahattan distance.</p>
+<p>Diberikan dua obyek yang diwakili oleh tuple (a,b,c,d,e,f) dan (f,g,h,i,j). Kita misalkan obyek pertama dengan i = (a,b,c,d,e) dan obyek kedua dengan j = (f,g,h,i,j) berikut nilai-nilainya :</p>
+<p>i                                               j</p>
+<p>a = 41<em>91=3731                 f = 41</em>80=3280</p>
+<p>b = 41<em>92=3772                 g = 41</em>81=3321</p>
+<p>c = 41<em>93=3813                 h = 41</em>82=3362</p>
+<p>d = 41<em>94=3854                 i = 41</em>83=3403</p>
+<p>e = 41<em>95=3895                 j = 41</em>84=3444</p>
 <p>memanggil fungsi yang aa pada library scipy dan membaca file exel yang telah dibuat.</p>
 <pre><code class="python">from scipy import stats
 import  pandas as pd
@@ -322,9 +370,11 @@ pd.read_csv(&quot;Tugas2.csv&quot;)
 390 rows × 9 columns
 </code></pre>
 
-<p><strong>Mencari jarak dengan methode Euclidia Distance</strong></p>
-<pre><code class="python">import math
-df=pd.read_csv(&quot;Tugas2.csv&quot;)
+<p><strong>Mencari jarak dengan methode Euclidia Distance dan methode manahattanDistance</strong> </p>
+<pre><code class="python">from scipy import stats
+import  pandas as pd
+import math
+df=pd.read_csv(&quot;servo.csv&quot;)
 def Euclidean(i,j):
     hasil = 0
     for ii in range(len(df)-1):
@@ -332,22 +382,294 @@ def Euclidean(i,j):
         hasil = hasil + rumus
     return math.sqrt(hasil)
 print(&quot;M = 2&quot;)
-print(&quot;jarak kedua objek adalah :&quot;,Euclidean(df['ford mustang gl'],df['vw pickup'])
+print(&quot;jarak kedua objek adalah :&quot;,Euclidean(df['vgain'],df['class']))
+def Manahattan(i,j):
+    hasil = 0
+    for kk in range(len(df)-1):
+        rumus = i[kk]-j[kk]
+        hasil = hasil + rumus
+    return hasil
+print(&quot;M = 1&quot;)
+print(&quot;jarak kedua objek adalah :&quot;,Manahattan(df['vgain'],df['class']))
 
 </code></pre>
 
-<p><strong>Mencari jarak dengan methode manahattanDistance</strong></p>
-<pre><code class="python">import math
-df=pd.read_csv(&quot;Tugas2.csv&quot;)
-def Manahattan(i,j):
-hasil = 0
-for ii in range(len(df)-1):
-    rumus = (i[ii]-j[ii])**2
-    hasil = hasil + rumus
-return math.sqrt(hasil)
-print(&quot;M = 1&quot;)
-print(&quot;jarak kedua objek adalah :&quot;,Manahattan(df['ford mustang gl'],df['vw pickup'])
+<p><strong>HASIL RUN</strong></p>
+<pre><code>M = 2
+jarak kedua objek adalah : 34.30324786357754
+M = 1
+jarak kedua objek adalah : 187.72495382000025
 
+</code></pre>
+
+<h1 id="tugas-3"><strong>TUGAS 3</strong></h1>
+<h1 id="feature-selection">feature selection</h1>
+<h1 id="entropy-menggunakan-tabel-frekuensi-dari-satu-atribut">Entropy menggunakan tabel frekuensi dari satu atribut</h1>
+<h2 id="information-gain">Information Gain</h2>
+<p>Ada banyak teknik untuk menyeleksi fitur. Information Gain bekerja dengan mendeteksi fitur yang paling banyak memiliki informasi berdasarkan kelas tertentu dengan menghitung nilai Entropy-nya</p>
+<p>Rumus untuk mencari Entropy Target adalah:</p>
+<p>Entropy(S):</p>
+<p>c∑i−Pilog2PiEntropy(S):</p>
+<p>∑ic−Pilog2⁡Pi</p>
+<p>Dimana c adalah jumlah nilai yang ada pada kelas kategori dan Pi adalah jumlah sampel untuk kelas i</p>
+<pre><code>import numpy as np
+import seaborn as sea
+import matplotlib.pyplot as mat
+from scipy import stats
+import pandas as data
+import math as rumus
+sample = data.read_csv("feture selection.csv")
+print(sample)
+def entropy(b,a):
+result = -(a*rumus.log2(a))-(b*rumus.log2(b))
+return result
+
+def play(yes,no):
+dataclass = []
+for i in sample['play']:
+    dataclass.append(i)
+
+data = len(dataclass)
+tempyes = yes/data
+tempno = no/data
+
+result = entropy(tempyes,tempno)
+return result
+mother_value=play(9,5)
+</code></pre>
+<h1 id="entropy-menggunakan-tabel-frekuensi-dengan-dua-attribut">Entropy menggunakan tabel frekuensi dengan dua attribut</h1>
+<pre><code>def Entropy(b,a,c):
+result = -(a/c*rumus.log2(a/c))-(b/c*rumus.log2(b/c))
+return result
+</code></pre>
+<h1 id="untuk-outlook">untuk outlook</h1>
+<pre><code>def outlook(sunny_yes,sunny_no,overcast_yes,overcast_no,rainy_yes,rainy_no):
+data_sunny = sunny_yes + sunny_no 
+data_overcast = overcast_yes +overcast_no
+data_rainy = rainy_yes + rainy_no
+
+data = data_sunny + data_overcast + data_rainy
+
+E_sunny = Entropy(sunny_no,sunny_yes,data_sunny)
+E_overcast  = 0
+E_rainy = Entropy(rainy_no,rainy_yes,data_rainy)
+
+count = (data_sunny/data)*E_sunny + (data_overcast/data) *0 + (data_rainy/data)*E_rainy
+return count
+</code></pre>
+<h1 id="untuk-temperature">untuk temperature</h1>
+<pre><code>def temperature(hot_yes,hot_no,mild_yes,mild_no,cool_yes,cool_no):
+data_hot = hot_yes + hot_no 
+data_mild = mild_yes +mild_no
+data_cool = cool_yes + cool_no
+
+data = data_hot + data_mild + data_cool
+
+E_hot = Entropy(hot_no,hot_yes,data_hot)
+E_mild  = Entropy(mild_no,mild_yes,data_mild)
+E_cool = Entropy(cool_no,cool_yes,data_cool)
+
+count = (data_hot/data)*E_hot + (data_mild/data) *E_mild + (data_cool/data)*E_cool
+return count
+</code></pre>
+<h1 id="untuk-humidity">untuk Humidity</h1>
+<pre><code>def Humidity(high_yes,high_no,normal_yes,normal_no):
+data_high = high_yes + high_no 
+data_normal = normal_yes +normal_no
+
+data = data_high + data_normal
+
+E_high = Entropy(high_yes,high_no,data_high)
+E_normal  = Entropy(normal_yes,normal_no,data_normal)
+
+count = (data_high/data)*E_high + (data_normal/data) *E_normal
+return count
+</code></pre>
+<h1 id="untuk-windy">untuk windy</h1>
+<pre><code>def windy(False_yes,False_no,True_yes,True_no):
+data_False = False_yes + False_no 
+data_True = True_yes + True_no
+
+data = data_False + data_True
+
+E_false = Entropy(False_yes,False_no,data_False)
+E_true  = Entropy(True_yes,True_no,data_True)
+
+count = (data_False/data)*E_false + (data_True/data) *E_true
+return count
+
+def rdoutlook():
+count = 0
+temp=[]
+rainy_yes = []
+rainy_no = []
+overcast_yes = []
+overcast_no =[]
+sunny_yes = []
+sunny_no =[]
+for v in sample['play']:
+    if (v == "yes"):
+        temp.append("yes")
+    else:
+        temp.append("no")
+
+for i in sample['outlook']:
+    if (i  == "rainy" and temp[count] == "yes"):
+        rainy_yes.append(i)
+    elif (i  == "rainy" and temp[count] == "no"):
+        rainy_no.append(i)
+    elif (i  == "overcast" and temp[count] == "yes"):
+        overcast_yes.append(i)
+    elif (i  == "overcast" and temp[count] == "no"):
+        overcast_no.append(i)
+    elif (i  == "sunny" and temp[count] == "yes"):
+        sunny_yes.append(i)
+    elif (i  == "sunny" and temp[count] == "no"):
+        sunny_no.append(i)
+    count += 1
+
+Voutlook=outlook(len(rainy_yes),len(rainy_no),len(overcast_yes),len(overcast_no),len(sunny_yes),len(sunny_no))
+gain_outlook = mother_value - Voutlook
+return gain_outlook
+
+def rdtemperature():
+count = 0
+temp=[]
+hot_yes = []
+hot_no = []
+mild_yes = []
+mild_no =[]
+cool_yes = []
+cool_no =[]
+
+for v in sample['play']:
+    if (v == "yes"):
+        temp.append("yes")
+    else:
+        temp.append("no")
+
+for i in sample['temperature']:
+    if (i  == "hot" and temp[count] == "yes"):
+        hot_yes.append(i)
+    elif (i  == "hot" and temp[count] == "no"):
+        hot_no.append(i)
+    elif (i  == "mild" and temp[count] == "yes"):
+        mild_yes.append(i)
+    elif (i  == "mild" and temp[count] == "no"):
+        mild_no.append(i)
+    elif (i  == "cool" and temp[count] == "yes"):
+        cool_yes.append(i)
+    elif (i  == "cool" and temp[count] == "no"):
+        cool_no.append(i)
+    count += 1
+
+Vtemperature=temperature(len(hot_yes),len(hot_no),len(mild_yes),len(mild_no),len(cool_yes),len(cool_no))
+gain_temperature = mother_value - Vtemperature
+return gain_temperature
+
+def rdhumidity():
+count = 0
+temp=[]
+high_yes = []
+high_no = []
+normal_yes = []
+normal_no =[]
+
+for v in sample['play']:
+    if (v == "yes"):
+        temp.append("yes")
+    else:
+        temp.append("no")
+
+for i in sample['humidity']:
+    if (i  == "high" and temp[count] == "yes"):
+        high_yes.append(i)
+    elif (i  == "high" and temp[count] == "no"):
+        high_no.append(i)
+    elif (i  == "normal" and temp[count] == "yes"):
+        normal_yes.append(i)
+    elif (i  == "normal" and temp[count] == "no"):
+        normal_no.append(i)
+    count += 1
+
+Vhumidity=Humidity(len(high_yes),len(high_no),len(normal_yes),len(normal_no))
+gain_humidity = mother_value - Vhumidity
+return gain_humiditydef
+
+
+rdwindy():
+count = 0
+temp=[]
+false_yes = []
+false_no = []
+true_yes = []
+true_no =[]
+
+for v in sample['play']:
+    if (v == "yes"):
+        temp.append("yes")
+    else:
+        temp.append("no")
+
+for i in sample['windy']:
+    if (i  == False and temp[count] == "yes"):
+        false_yes.append(i)
+    elif (i  == False and temp[count] == "no"):
+        false_no.append(i)
+    elif (i  == True and temp[count] == "yes"):
+        true_yes.append(i)
+    elif (i  == True and temp[count] == "no"):
+        true_no.append(i)
+    count += 1
+
+Vwindy=windy(len(false_yes),len(false_no),len(true_yes),len(true_no))
+gain_windy = mother_value - Vwindy
+return gain_windydef 
+read_data():
+
+print("Nilai gain information dari outlook = ",rdoutlook())
+print("Nilai gain information dari temperature = ",rdtemperature())
+print("Nilai gain information dari humidity = ",rdhumidity())
+print("Nilai gain information dari windy = ",rdwindy())
+
+read_data()
+</code></pre>
+<h2 id="hasil"><strong>HASIL</strong></h2>
+<pre><code>    outlook  temperature humidity  windy play Unnamed: 5 Unnamed: 6  \
+0      sunny         hot     high  False   no         no        yes   
+1      sunny         hot     high   True   no          5          9   
+2   overcast         hot     high  False  yes    p1=5/14    p2=9/14   
+3      rainy        mild     high  False  yes        NaN        NaN   
+4      rainy        cool   normal  False  yes        NaN        NaN   
+5      rainy        cool   normal   True   no        NaN        NaN   
+6   overcast        cool   normal   True  yes        NaN        NaN   
+7      sunny        mild     high  False   no        NaN        NaN   
+8      sunny        cool   normal  False  yes        NaN        NaN   
+9      rainy        mild   normal  False  yes        NaN        NaN   
+10     sunny        mild   normal   True  yes        NaN        NaN   
+11  overcast        mild     high   True  yes        NaN        NaN   
+12  overcast         hot   normal  False  yes        NaN        NaN   
+13     rainy        mild     high   True   no        NaN        NaN   
+
+    Unnamed: 7  Unnamed: 8  
+0          NaN         NaN  
+1          NaN    0.940286  
+2          NaN         NaN  
+3          NaN         NaN  
+4          NaN         NaN  
+5          NaN         NaN  
+6          NaN         NaN  
+7          NaN         NaN  
+8          NaN         NaN  
+9          NaN         NaN  
+10         NaN         NaN  
+11         NaN         NaN  
+12         NaN         NaN  
+13         NaN         NaN  
+Nilai gain information dari outlook =  0.24674981977443933
+Nilai gain information dari temperature =  0.02922256565895487
+Nilai gain information dari humidity =  0.15183550136234159
+Nilai gain information dari windy =  0.0481270304082694
 </code></pre></div>
         </div>
 
@@ -431,5 +753,5 @@ print(&quot;jarak kedua objek adalah :&quot;,Manahattan(df['ford mustang gl'],df
 
 <!--
 MkDocs version : 1.0.4
-Build Date UTC : 2019-09-13 15:27:57
+Build Date UTC : 2019-09-25 16:45:55
 -->
