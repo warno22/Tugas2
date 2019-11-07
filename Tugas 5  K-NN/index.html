@@ -1,0 +1,2188 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>Tugas 5  K NN - My Docs</title>
+        <link href="../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+        <script src="../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../js/bootstrap-3.0.3.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <div class="container">
+
+                <!-- Collapsed navigation -->
+                <div class="navbar-header">
+                    <!-- Expander button -->
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="..">My Docs</a>
+                </div>
+
+                <!-- Expanded navigation -->
+                <div class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li >
+                                <a href="..">Home</a>
+                            </li>
+                            <li >
+                                <a href="../TUGAS 4/">TUGAS 4</a>
+                            </li>
+                            <li class="active">
+                                <a href="./">Tugas 5  K NN</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li >
+                                <a rel="next" href="../TUGAS 4/">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="disabled">
+                                <a rel="prev" >
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="main active"><a href="#k-nn">K-NN</a></li>
+            <li><a href="#tahapan-langkah-algoritma-k-nn">Tahapan Langkah Algoritma K-NN</a></li>
+            <li><a href="#contoh-kasus-perhitungan-k-nn">Contoh Kasus Perhitungan K-NN¶</a></li>
+        <li class="main "><a href="#contoh-kasus">Contoh kasus</a></li>
+    </ul>
+</div></div>
+                <div class="col-md-9" role="main">
+
+<h2 id="k-nn">K-NN</h2>
+<p><strong>Algoritma K-Nearest Neighbor (K-NN)</strong> adalah sebuah metode klasifikasi terhadap sekumpulan data berdasarkan pembelajaran  data yang sudah terklasifikasikan sebelumya. Termasuk dalam <strong>supervised learning</strong>, dimana hasil query instance yang baru diklasifikasikan berdasarkan mayoritas kedekatan jarak dari kategori yang ada dalam <strong>K-NN</strong>.</p>
+<h4 id="tahapan-langkah-algoritma-k-nn"><strong>Tahapan Langkah Algoritma K-NN</strong></h4>
+<ol>
+<li>Menentukan parameter k (jumlah tetangga paling dekat).</li>
+<li>Menghitung kuadrat jarak eucliden objek terhadap data training yang diberikan.</li>
+<li>Mengurutkan hasil no 2 secara <em>ascending</em> (berurutan dari nilai tinggi ke rendah)</li>
+<li>Mengumpulkan kategori Y (Klasifikasi nearest neighbor berdasarkan nilai k)</li>
+<li>Dengan menggunakan kategori nearest neighbor yang paling mayoritas maka dapat dipredisikan kategori objek.</li>
+</ol>
+<h4 id="contoh-kasus-perhitungan-k-nn"><strong>Contoh Kasus Perhitungan K-NN</strong><a href="https://alfinniam666.github.io/PenambanganDataTugas5/compliance/#4-contoh-kasus-perhitungan-k-nn">¶</a></h4>
+<p>Terdapat beberapa data yang berasal dari survey questioner tentang klasifikasi kualitas kertas tissue apakah baik atau jelek, dengan objek training dibawah ini menggunakan dua attribute yaitu daya tahan terhadap asam dan kekuatan.</p>
+<p><img alt="contoh perhitungan k-nn" src="https://informatikalogi.com/wp-content/uploads/2017/04/contoh-perhitungan-k-nn.jpg" /></p>
+<p>contoh perhitungan k-nn</p>
+<p>Akan diproduksi kembali kertas tissue dengan attribute <strong>X1=7</strong> dan <strong>X2=4</strong>, tanpa harus mengeluarkan biaya untuk melakukan survey, maka dapat diklasifikasikan kertas tissue tersebut termasuk yang baik atau jelek.</p>
+<p><img alt="contoh perhitungan k-nn (2)" src="https://informatikalogi.com/wp-content/uploads/2017/04/contoh-perhitungan-k-nn-2.jpg" /></p>
+<p>contoh perhitungan k-nn (2)</p>
+<p><img alt="contoh perhitungan k-nn (3)" src="https://informatikalogi.com/wp-content/uploads/2017/04/contoh-perhitungan-k-nn-3.jpg" /></p>
+<p>contoh perhitungan k-nn (3)</p>
+<p>Dengan mengurutkan jarak terkecil, semisal diambil K=3, maka perbandingan nya adalah 2 (Baik) &gt;1 (Jelek). Maka dapat disimpulkan kertas tissue dengan attribute <strong>X1=7</strong> dan <strong>X2=4</strong> masuk ke kelas <strong>Baik.</strong></p>
+<h1 id="contoh-kasus">Contoh kasus</h1>
+<table>
+<thead>
+<tr>
+<th>sepallength</th>
+<th>sepalwidth</th>
+<th>petallength</th>
+<th>petalwidth</th>
+<th>iris</th>
+<th></th>
+<th></th>
+<th>sepal length  stat</th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>5.1</td>
+<td>3.5</td>
+<td>1.4</td>
+<td>0.2</td>
+<td>Iris-setosa</td>
+<td></td>
+<td>Count</td>
+<td>150</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>4.9</td>
+<td>3</td>
+<td>1.4</td>
+<td>0.2</td>
+<td>Iris-setosa</td>
+<td></td>
+<td>Minimum</td>
+<td>4.3</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>4.7</td>
+<td>3.2</td>
+<td>1.3</td>
+<td>0.2</td>
+<td>Iris-setosa</td>
+<td></td>
+<td>Maximum</td>
+<td>7.9</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>4.6</td>
+<td>3.1</td>
+<td>1.5</td>
+<td>0.2</td>
+<td>Iris-setosa</td>
+<td></td>
+<td>Mean</td>
+<td>5.84</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>5</td>
+<td>3.6</td>
+<td>1.4</td>
+<td>0.2</td>
+<td>Iris-setosa</td>
+<td></td>
+<td>Median</td>
+<td>5.8</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>5.4</td>
+<td>3.9</td>
+<td>1.7</td>
+<td>0.4</td>
+<td>Iris-setosa</td>
+<td></td>
+<td>Mode</td>
+<td>5</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>4.6</td>
+<td>3.4</td>
+<td>1.4</td>
+<td>0.3</td>
+<td>Iris-setosa</td>
+<td></td>
+<td>Quartile 1</td>
+<td>5.1</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>5</td>
+<td>3.4</td>
+<td>1.5</td>
+<td>0.2</td>
+<td>Iris-setosa</td>
+<td></td>
+<td>Range</td>
+<td>3.6</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>4.4</td>
+<td>2.9</td>
+<td>1.4</td>
+<td>0.2</td>
+<td>Iris-setosa</td>
+<td></td>
+<td>Variance</td>
+<td>0.69</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>4.9</td>
+<td>3.1</td>
+<td>1.5</td>
+<td>0.1</td>
+<td>Iris-setosa</td>
+<td></td>
+<td>Standard Deviation</td>
+<td>0.83</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>5.4</td>
+<td>3.7</td>
+<td>1.5</td>
+<td>0.2</td>
+<td>Iris-setosa</td>
+<td></td>
+<td>Coefficient of Variation</td>
+<td>14.20%</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>4.8</td>
+<td>3.4</td>
+<td>1.6</td>
+<td>0.2</td>
+<td>Iris-setosa</td>
+<td></td>
+<td>Skewness</td>
+<td>0.31</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>4.8</td>
+<td>3</td>
+<td>1.4</td>
+<td>0.1</td>
+<td>Iris-setosa</td>
+<td></td>
+<td>Kurtosis</td>
+<td>-0.55</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>4.3</td>
+<td>3</td>
+<td>1.1</td>
+<td>0.1</td>
+<td>Iris-setosa</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>5.8</td>
+<td>4</td>
+<td>1.2</td>
+<td>0.2</td>
+<td>Iris-setosa</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>5.7</td>
+<td>4.4</td>
+<td>1.5</td>
+<td>0.4</td>
+<td>Iris-setosa</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>5.4</td>
+<td>3.9</td>
+<td>1.3</td>
+<td>0.4</td>
+<td>Iris-setosa</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>5.1</td>
+<td>3.5</td>
+<td>1.4</td>
+<td>0.3</td>
+<td>Iris-setosa</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>5.7</td>
+<td>3.8</td>
+<td>1.7</td>
+<td>0.3</td>
+<td>Iris-setosa</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>5.1</td>
+<td>3.8</td>
+<td>1.5</td>
+<td>0.3</td>
+<td>Iris-setosa</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>5.4</td>
+<td>3.4</td>
+<td>1.7</td>
+<td>0.2</td>
+<td>Iris-setosa</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>5.1</td>
+<td>3.7</td>
+<td>1.5</td>
+<td>0.4</td>
+<td>Iris-setosa</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>4.6</td>
+<td>3.6</td>
+<td>1</td>
+<td>0.2</td>
+<td>Iris-setosa</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>5.1</td>
+<td>3.3</td>
+<td>1.7</td>
+<td>0.5</td>
+<td>Iris-setosa</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>4.8</td>
+<td>3.4</td>
+<td>1.9</td>
+<td>0.2</td>
+<td>Iris-setosa</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>5</td>
+<td>3</td>
+<td>1.6</td>
+<td>0.2</td>
+<td>Iris-setosa</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>5</td>
+<td>3.4</td>
+<td>1.6</td>
+<td>0.4</td>
+<td>Iris-setosa</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>5.2</td>
+<td>3.5</td>
+<td>1.5</td>
+<td>0.2</td>
+<td>Iris-setosa</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>5.2</td>
+<td>3.4</td>
+<td>1.4</td>
+<td>0.2</td>
+<td>Iris-setosa</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>4.7</td>
+<td>3.2</td>
+<td>1.6</td>
+<td>0.2</td>
+<td>Iris-setosa</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>4.8</td>
+<td>3.1</td>
+<td>1.6</td>
+<td>0.2</td>
+<td>Iris-setosa</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>5.4</td>
+<td>3.4</td>
+<td>1.5</td>
+<td>0.4</td>
+<td>Iris-setosa</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>5.2</td>
+<td>4.1</td>
+<td>1.5</td>
+<td>0.1</td>
+<td>Iris-setosa</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>5.5</td>
+<td>4.2</td>
+<td>1.4</td>
+<td>0.2</td>
+<td>Iris-setosa</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>4.9</td>
+<td>3.1</td>
+<td>1.5</td>
+<td>0.1</td>
+<td>Iris-setosa</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>5</td>
+<td>3.2</td>
+<td>1.2</td>
+<td>0.2</td>
+<td>Iris-setosa</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>5.5</td>
+<td>3.5</td>
+<td>1.3</td>
+<td>0.2</td>
+<td>Iris-setosa</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>4.9</td>
+<td>3.1</td>
+<td>1.5</td>
+<td>0.1</td>
+<td>Iris-setosa</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>4.4</td>
+<td>3</td>
+<td>1.3</td>
+<td>0.2</td>
+<td>Iris-setosa</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>5.1</td>
+<td>3.4</td>
+<td>1.5</td>
+<td>0.2</td>
+<td>Iris-setosa</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>5</td>
+<td>3.5</td>
+<td>1.3</td>
+<td>0.3</td>
+<td>Iris-setosa</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>4.5</td>
+<td>2.3</td>
+<td>1.3</td>
+<td>0.3</td>
+<td>Iris-setosa</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>4.4</td>
+<td>3.2</td>
+<td>1.3</td>
+<td>0.2</td>
+<td>Iris-setosa</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>5</td>
+<td>3.5</td>
+<td>1.6</td>
+<td>0.6</td>
+<td>Iris-setosa</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>5.1</td>
+<td>3.8</td>
+<td>1.9</td>
+<td>0.4</td>
+<td>Iris-setosa</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>4.8</td>
+<td>3</td>
+<td>1.4</td>
+<td>0.3</td>
+<td>Iris-setosa</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>5.1</td>
+<td>3.8</td>
+<td>1.6</td>
+<td>0.2</td>
+<td>Iris-setosa</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>4.6</td>
+<td>3.2</td>
+<td>1.4</td>
+<td>0.2</td>
+<td>Iris-setosa</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>5.3</td>
+<td>3.7</td>
+<td>1.5</td>
+<td>0.2</td>
+<td>Iris-setosa</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>5</td>
+<td>3.3</td>
+<td>1.4</td>
+<td>0.2</td>
+<td>Iris-setosa</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>7</td>
+<td>3.2</td>
+<td>4.7</td>
+<td>1.4</td>
+<td>Iris-versicolor</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>6.4</td>
+<td>3.2</td>
+<td>4.5</td>
+<td>1.5</td>
+<td>Iris-versicolor</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>6.9</td>
+<td>3.1</td>
+<td>4.9</td>
+<td>1.5</td>
+<td>Iris-versicolor</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>5.5</td>
+<td>2.3</td>
+<td>4</td>
+<td>1.3</td>
+<td>Iris-versicolor</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>6.5</td>
+<td>2.8</td>
+<td>4.6</td>
+<td>1.5</td>
+<td>Iris-versicolor</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>5.7</td>
+<td>2.8</td>
+<td>4.5</td>
+<td>1.3</td>
+<td>Iris-versicolor</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>6.3</td>
+<td>3.3</td>
+<td>4.7</td>
+<td>1.6</td>
+<td>Iris-versicolor</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>4.9</td>
+<td>2.4</td>
+<td>3.3</td>
+<td>1</td>
+<td>Iris-versicolor</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>6.6</td>
+<td>2.9</td>
+<td>4.6</td>
+<td>1.3</td>
+<td>Iris-versicolor</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>5.2</td>
+<td>2.7</td>
+<td>3.9</td>
+<td>1.4</td>
+<td>Iris-versicolor</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>5</td>
+<td>2</td>
+<td>3.5</td>
+<td>1</td>
+<td>Iris-versicolor</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>5.9</td>
+<td>3</td>
+<td>4.2</td>
+<td>1.5</td>
+<td>Iris-versicolor</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>6</td>
+<td>2.2</td>
+<td>4</td>
+<td>1</td>
+<td>Iris-versicolor</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>6.1</td>
+<td>2.9</td>
+<td>4.7</td>
+<td>1.4</td>
+<td>Iris-versicolor</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>5.6</td>
+<td>2.9</td>
+<td>3.6</td>
+<td>1.3</td>
+<td>Iris-versicolor</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>6.7</td>
+<td>3.1</td>
+<td>4.4</td>
+<td>1.4</td>
+<td>Iris-versicolor</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>5.6</td>
+<td>3</td>
+<td>4.5</td>
+<td>1.5</td>
+<td>Iris-versicolor</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>5.8</td>
+<td>2.7</td>
+<td>4.1</td>
+<td>1</td>
+<td>Iris-versicolor</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>6.2</td>
+<td>2.2</td>
+<td>4.5</td>
+<td>1.5</td>
+<td>Iris-versicolor</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>5.6</td>
+<td>2.5</td>
+<td>3.9</td>
+<td>1.1</td>
+<td>Iris-versicolor</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>5.9</td>
+<td>3.2</td>
+<td>4.8</td>
+<td>1.8</td>
+<td>Iris-versicolor</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>6.1</td>
+<td>2.8</td>
+<td>4</td>
+<td>1.3</td>
+<td>Iris-versicolor</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>6.3</td>
+<td>2.5</td>
+<td>4.9</td>
+<td>1.5</td>
+<td>Iris-versicolor</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>6.1</td>
+<td>2.8</td>
+<td>4.7</td>
+<td>1.2</td>
+<td>Iris-versicolor</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>6.4</td>
+<td>2.9</td>
+<td>4.3</td>
+<td>1.3</td>
+<td>Iris-versicolor</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>6.6</td>
+<td>3</td>
+<td>4.4</td>
+<td>1.4</td>
+<td>Iris-versicolor</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>6.8</td>
+<td>2.8</td>
+<td>4.8</td>
+<td>1.4</td>
+<td>Iris-versicolor</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>6.7</td>
+<td>3</td>
+<td>5</td>
+<td>1.7</td>
+<td>Iris-versicolor</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>6</td>
+<td>2.9</td>
+<td>4.5</td>
+<td>1.5</td>
+<td>Iris-versicolor</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>5.7</td>
+<td>2.6</td>
+<td>3.5</td>
+<td>1</td>
+<td>Iris-versicolor</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>5.5</td>
+<td>2.4</td>
+<td>3.8</td>
+<td>1.1</td>
+<td>Iris-versicolor</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>5.5</td>
+<td>2.4</td>
+<td>3.7</td>
+<td>1</td>
+<td>Iris-versicolor</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>5.8</td>
+<td>2.7</td>
+<td>3.9</td>
+<td>1.2</td>
+<td>Iris-versicolor</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>6</td>
+<td>2.7</td>
+<td>5.1</td>
+<td>1.6</td>
+<td>Iris-versicolor</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>5.4</td>
+<td>3</td>
+<td>4.5</td>
+<td>1.5</td>
+<td>Iris-versicolor</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>6</td>
+<td>3.4</td>
+<td>4.5</td>
+<td>1.6</td>
+<td>Iris-versicolor</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>6.7</td>
+<td>3.1</td>
+<td>4.7</td>
+<td>1.5</td>
+<td>Iris-versicolor</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>6.3</td>
+<td>2.3</td>
+<td>4.4</td>
+<td>1.3</td>
+<td>Iris-versicolor</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>5.6</td>
+<td>3</td>
+<td>4.1</td>
+<td>1.3</td>
+<td>Iris-versicolor</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>5.5</td>
+<td>2.5</td>
+<td>4</td>
+<td>1.3</td>
+<td>Iris-versicolor</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>5.5</td>
+<td>2.6</td>
+<td>4.4</td>
+<td>1.2</td>
+<td>Iris-versicolor</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>6.1</td>
+<td>3</td>
+<td>4.6</td>
+<td>1.4</td>
+<td>Iris-versicolor</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>5.8</td>
+<td>2.6</td>
+<td>4</td>
+<td>1.2</td>
+<td>Iris-versicolor</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>5</td>
+<td>2.3</td>
+<td>3.3</td>
+<td>1</td>
+<td>Iris-versicolor</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>5.6</td>
+<td>2.7</td>
+<td>4.2</td>
+<td>1.3</td>
+<td>Iris-versicolor</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>5.7</td>
+<td>3</td>
+<td>4.2</td>
+<td>1.2</td>
+<td>Iris-versicolor</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>5.7</td>
+<td>2.9</td>
+<td>4.2</td>
+<td>1.3</td>
+<td>Iris-versicolor</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>6.2</td>
+<td>2.9</td>
+<td>4.3</td>
+<td>1.3</td>
+<td>Iris-versicolor</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>5.1</td>
+<td>2.5</td>
+<td>3</td>
+<td>1.1</td>
+<td>Iris-versicolor</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>5.7</td>
+<td>2.8</td>
+<td>4.1</td>
+<td>1.3</td>
+<td>Iris-versicolor</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>6.3</td>
+<td>3.3</td>
+<td>6</td>
+<td>2.5</td>
+<td>Iris-virginica</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>5.8</td>
+<td>2.7</td>
+<td>5.1</td>
+<td>1.9</td>
+<td>Iris-virginica</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>7.1</td>
+<td>3</td>
+<td>5.9</td>
+<td>2.1</td>
+<td>Iris-virginica</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>6.3</td>
+<td>2.9</td>
+<td>5.6</td>
+<td>1.8</td>
+<td>Iris-virginica</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>6.5</td>
+<td>3</td>
+<td>5.8</td>
+<td>2.2</td>
+<td>Iris-virginica</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>7.6</td>
+<td>3</td>
+<td>6.6</td>
+<td>2.1</td>
+<td>Iris-virginica</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>4.9</td>
+<td>2.5</td>
+<td>4.5</td>
+<td>1.7</td>
+<td>Iris-virginica</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>7.3</td>
+<td>2.9</td>
+<td>6.3</td>
+<td>1.8</td>
+<td>Iris-virginica</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>6.7</td>
+<td>2.5</td>
+<td>5.8</td>
+<td>1.8</td>
+<td>Iris-virginica</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>7.2</td>
+<td>3.6</td>
+<td>6.1</td>
+<td>2.5</td>
+<td>Iris-virginica</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>6.5</td>
+<td>3.2</td>
+<td>5.1</td>
+<td>2</td>
+<td>Iris-virginica</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>6.4</td>
+<td>2.7</td>
+<td>5.3</td>
+<td>1.9</td>
+<td>Iris-virginica</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>6.8</td>
+<td>3</td>
+<td>5.5</td>
+<td>2.1</td>
+<td>Iris-virginica</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>5.7</td>
+<td>2.5</td>
+<td>5</td>
+<td>2</td>
+<td>Iris-virginica</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>5.8</td>
+<td>2.8</td>
+<td>5.1</td>
+<td>2.4</td>
+<td>Iris-virginica</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>6.4</td>
+<td>3.2</td>
+<td>5.3</td>
+<td>2.3</td>
+<td>Iris-virginica</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>6.5</td>
+<td>3</td>
+<td>5.5</td>
+<td>1.8</td>
+<td>Iris-virginica</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>7.7</td>
+<td>3.8</td>
+<td>6.7</td>
+<td>2.2</td>
+<td>Iris-virginica</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>7.7</td>
+<td>2.6</td>
+<td>6.9</td>
+<td>2.3</td>
+<td>Iris-virginica</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>6</td>
+<td>2.2</td>
+<td>5</td>
+<td>1.5</td>
+<td>Iris-virginica</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>6.9</td>
+<td>3.2</td>
+<td>5.7</td>
+<td>2.3</td>
+<td>Iris-virginica</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>5.6</td>
+<td>2.8</td>
+<td>4.9</td>
+<td>2</td>
+<td>Iris-virginica</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>7.7</td>
+<td>2.8</td>
+<td>6.7</td>
+<td>2</td>
+<td>Iris-virginica</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>6.3</td>
+<td>2.7</td>
+<td>4.9</td>
+<td>1.8</td>
+<td>Iris-virginica</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>6.7</td>
+<td>3.3</td>
+<td>5.7</td>
+<td>2.1</td>
+<td>Iris-virginica</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>7.2</td>
+<td>3.2</td>
+<td>6</td>
+<td>1.8</td>
+<td>Iris-virginica</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>6.2</td>
+<td>2.8</td>
+<td>4.8</td>
+<td>1.8</td>
+<td>Iris-virginica</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>6.1</td>
+<td>3</td>
+<td>4.9</td>
+<td>1.8</td>
+<td>Iris-virginica</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>6.4</td>
+<td>2.8</td>
+<td>5.6</td>
+<td>2.1</td>
+<td>Iris-virginica</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>7.2</td>
+<td>3</td>
+<td>5.8</td>
+<td>1.6</td>
+<td>Iris-virginica</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>7.4</td>
+<td>2.8</td>
+<td>6.1</td>
+<td>1.9</td>
+<td>Iris-virginica</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>7.9</td>
+<td>3.8</td>
+<td>6.4</td>
+<td>2</td>
+<td>Iris-virginica</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>6.4</td>
+<td>2.8</td>
+<td>5.6</td>
+<td>2.2</td>
+<td>Iris-virginica</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>6.3</td>
+<td>2.8</td>
+<td>5.1</td>
+<td>1.5</td>
+<td>Iris-virginica</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>6.1</td>
+<td>2.6</td>
+<td>5.6</td>
+<td>1.4</td>
+<td>Iris-virginica</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>7.7</td>
+<td>3</td>
+<td>6.1</td>
+<td>2.3</td>
+<td>Iris-virginica</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>6.3</td>
+<td>3.4</td>
+<td>5.6</td>
+<td>2.4</td>
+<td>Iris-virginica</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>6.4</td>
+<td>3.1</td>
+<td>5.5</td>
+<td>1.8</td>
+<td>Iris-virginica</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>6</td>
+<td>3</td>
+<td>4.8</td>
+<td>1.8</td>
+<td>Iris-virginica</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>6.9</td>
+<td>3.1</td>
+<td>5.4</td>
+<td>2.1</td>
+<td>Iris-virginica</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>6.7</td>
+<td>3.1</td>
+<td>5.6</td>
+<td>2.4</td>
+<td>Iris-virginica</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>6.9</td>
+<td>3.1</td>
+<td>5.1</td>
+<td>2.3</td>
+<td>Iris-virginica</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>5.8</td>
+<td>2.7</td>
+<td>5.1</td>
+<td>1.9</td>
+<td>Iris-virginica</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>6.8</td>
+<td>3.2</td>
+<td>5.9</td>
+<td>2.3</td>
+<td>Iris-virginica</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>6.7</td>
+<td>3.3</td>
+<td>5.7</td>
+<td>2.5</td>
+<td>Iris-virginica</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>6.7</td>
+<td>3</td>
+<td>5.2</td>
+<td>2.3</td>
+<td>Iris-virginica</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>6.3</td>
+<td>2.5</td>
+<td>5</td>
+<td>1.9</td>
+<td>Iris-virginica</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>6.5</td>
+<td>3</td>
+<td>5.2</td>
+<td>2</td>
+<td>Iris-virginica</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>6.2</td>
+<td>3.4</td>
+<td>5.4</td>
+<td>2.3</td>
+<td>Iris-virginica</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>5.9</td>
+<td>3</td>
+<td>5.1</td>
+<td>1.8</td>
+<td>Iris-virginica</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Berikut adalah Code dari KNN dari data yang telah saya buat</p>
+<pre><code>#tugas k-nn
+import numpy as np
+import seaborn as sea
+import matplotlib.pyplot as mat
+from scipy import stats
+import pandas as calldata
+import math 
+from math import sqrt
+import statistics as s
+
+# membaca data
+data = calldata.read_csv(&quot;Iris_tugas5.csv&quot;)
+#print(data)
+
+#data uji
+# nilai k
+k = int(input(&quot;masukkan nilai k = &quot;)) 
+#termasuk class apa data diatas ?
+
+# array untuk menampung data dari data asli
+l_petallength=[]
+l_petalwidth=[]
+l_sepallength=[]
+l_sepalwidth=[]
+l_class=[]
+# array untuk data yang di normalisasi
+n_petallength=[]
+n_petalwidth=[]
+n_sepallength=[]
+n_sepalwidth=[]
+
+# fungsi untuk mengambil data dari file
+def mengambil_data():
+    for i in data:
+        for j in data[i]:
+            #print(type(j))
+            if(i == 'sepallength'):
+                l_sepallength.append(j)
+            elif(i =='sepalwidth'): 
+                l_sepalwidth.append(j)
+            elif(i == 'petallength'):
+                l_petallength.append(j)
+            elif(i=='petalwidth'):
+                l_petalwidth.append(j)
+    for k in data['iris']:
+        l_class.append(k)
+
+#normalisasi data
+def normalisasi():
+    for a in l_sepallength:
+        value = (a-s.mean(l_sepallength))/s.stdev(l_sepallength)
+        n_sepallength.append(value)
+    for b in l_sepalwidth:
+        value = (b-s.mean(l_sepalwidth))/s.stdev(l_sepalwidth)
+        n_sepalwidth.append(value)
+    for c in l_petallength:
+        value = (c-s.mean(l_petallength))/s.stdev(l_petallength)
+        n_petallength.append(value)
+    for d in l_petalwidth:
+        value = (d-s.mean(l_petalwidth))/s.stdev(l_petalwidth)
+        n_petalwidth.append(value)
+
+#list untuk menampung nilai yang sudah di normalisasi
+petallength=[]
+petalwidth=[]
+sepallength=[]
+sepalwidth=[]
+r_class=[]
+data_sample=[]
+
+tes_petallength=[]
+tes_petalwidth=[]
+tes_sepallength=[]
+tes_sepalwidth=[]
+tes_class=[]
+data_tes=[]
+
+#mengkategori data antara data sample dan data tes
+def pengelompokan():
+    for i in range(len(l_class)):
+        #data asli
+        if i &lt; 25 :            
+            petallength.append(n_petallength[i])
+        elif i &lt; 50 :
+            petalwidth.append(n_petalwidth[i])
+        elif i &lt; 75  :
+            sepallength.append(n_sepallength[i])
+        elif i &lt; 100 :
+            sepalwidth.append(n_sepalwidth[i])
+        #r_class.append(l_class[i])
+        #data uji
+        elif i &lt;115:
+            tes_petallength.append(n_petallength[i])
+        elif i &lt;130:
+            tes_petalwidth.append(n_petalwidth[i])
+        elif i &lt;140:
+            tes_sepallength.append(n_sepallength[i])
+        elif i &lt;150:
+            tes_sepalwidth.append(n_sepalwidth[i])
+            #tes_class.append(l_class[i])
+
+    #mengisi nilai pada data sample
+
+    for a in petallength:
+        data_sample.append(a)
+    for b in petalwidth:
+        data_sample.append(b)
+    for c in sepalwidth:
+        data_sample.append(c)
+    for d in sepallength:
+        data_sample.append(d)
+
+    #mengisi nilai pada data tes
+    for e in tes_petallength:
+        data_tes.append(e)
+    for f in tes_petalwidth:
+        data_tes.append(f)
+    for g in tes_sepalwidth:
+        data_tes.append(g)
+    for h in tes_sepallength:
+        data_tes.append(h)
+
+#list yang menyimpan nilai jarak euclidean
+distance=[]    
+
+#fungsi untuk knn
+def knn():
+
+    hasil = []
+    for i in range(len(data_tes)):
+        for j in range(len(data_sample)):
+            #menggunakan eucludean distance
+            jarak = sqrt(pow(data_tes[i]-data_sample[j],2))
+            distance.append(jarak)
+
+#fungsi untuk weight knn
+def wknn():
+    frekuensi0=[]
+    frekuensi1=[]
+    jarak = []
+    for j in range(len(distance)):
+        value = distance[j]/distance[k+1]
+        jarak.append(value)
+    for i in jarak:
+        if i &lt; 1:
+            frekuensi0.append(i)
+        elif i &gt; 1:
+            frekuensi1.append(i)
+    print(&quot;jumlah frekuensi 0 = &quot;,len(frekuensi0))
+    print(&quot;jumlah frekuensi 1 = &quot;,len(frekuensi1))
+
+#urutan eksekusi fungsi diatas
+mengambil_data()
+normalisasi()
+pengelompokan()
+knn()
+wknn()
+
+</code></pre>
+
+<p>Hasil run :</p>
+<p>saya masukkan dengan nilai K = 7 :</p>
+<pre><code>masukkan nilai k = 7
+jumlah frekuensi 0 =  4363
+jumlah frekuensi 1 =  630
+</code></pre></div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../js/base.js" defer></script>
+        <script src="../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form role="form">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="Keyboard Shortcuts Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Keyboard Shortcuts</h4>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
