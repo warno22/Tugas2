@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>Fuzzy clustering - My Docs</title>
+        <link href="../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+        <script src="../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../js/bootstrap-3.0.3.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <div class="container">
+
+                <!-- Collapsed navigation -->
+                <div class="navbar-header">
+                    <!-- Expander button -->
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="..">My Docs</a>
+                </div>
+
+                <!-- Expanded navigation -->
+                <div class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li >
+                                <a href="..">Home</a>
+                            </li>
+                            <li class="active">
+                                <a href="./">Fuzzy clustering</a>
+                            </li>
+                            <li >
+                                <a href="../TUGAS 4/">TUGAS 4</a>
+                            </li>
+                            <li >
+                                <a href="../Tugas 5  K-NN/">Tugas 5  K NN</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li >
+                                <a rel="next" href="..">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li >
+                                <a rel="prev" href="../TUGAS 4/">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="main active"><a href="#fuzzy-clustering">Fuzzy clustering</a></li>
+            <li><a href="#hasil-run">Hasil Run:</a></li>
+    </ul>
+</div></div>
+                <div class="col-md-9" role="main">
+
+<h3 id="fuzzy-clustering">Fuzzy clustering</h3>
+<p>​   Fuzzy clustering (juga disebut sebagai soft clustering atau soft k -means ) adalah bentuk pengelompokan di mana setiap titik data dapat menjadi milik lebih dari satu cluster. </p>
+<p>​   Clustering atau analisis cluster melibatkan penugasan poin data ke cluster sehingga item dalam cluster yang sama adalah sama mungkin, sementara item milik cluster berbeda sama mungkin.  Cluster diidentifikasi melalui langkah-langkah kesamaan.  Langkah-langkah kesamaan ini mencakup jarak, konektivitas, dan intensitas.</p>
+<p>​   Algoritma FCM (Fuzzy C-Means) Clustering adalah salah satu algoritma yang digunakan dalam pengolahan citra. . Algoritma ini merupakan penggabungan dari <a href="https://piptools.net/algoritma-fuzzy-logic/">Algoritma Fuzzy Logic</a> dan Algoritma K-Means Clustering. K-Means Clustering adalah salah satu algoritma klasifikasi data yang cukup banyak dipakai untuk memecahkan masalah. Hanya saja metode tersebut tidak memiliki nilai pengembalian berupa sebuah nilai pembanding untuk masing-masing cluster, sehingga digunakan algoritma Fuzzy untuk menghitung skor dari sebuah data.</p>
+<p>Contoh Penggunaan FCM pada data:</p>
+<pre><code>import numpy as np
+import seaborn as sea
+import matplotlib.pyplot as mat
+from scipy import stats
+import pandas as calldata
+import math as rumus
+import statistics as s
+
+
+Data = calldata.read_csv(&quot;clustering.csv&quot;)
+Data = Data[['STG','SCG','STR','LPR','PEG']].sample(6, random_state=42)
+D = Data.values
+print(&quot;Table (D) &gt;&gt;&quot;)
+
+n, m, c, w, T, e, P0, t = *D.shape, 2, 2, 10, 0.1, 0, 1
+print(&quot;Variables &gt;&gt;&quot;)
+print(&quot; n = %d\n m = %d\n c = %d\n w = %d\n T = %d\n e = %f\n P0 = %d\n t = %d&quot; % (n, m, c, w, T, e, P0, t))
+random.seed(42)
+U = np.array([[random.uniform(0, 1) for _ in range(c)] for _ in range(n)])
+print(&quot;U &gt;&gt;\n&quot;)
+print(U)
+def cluster(U, D, x, y): return sum([U[i,y]**w*D[i,x] for i in range(n)])/sum([U[i,y]**w for i in range(n)])
+V = np.array([[cluster(U,D,x,y) for x in range(m)] for y in range(c)])
+print(&quot;V &gt;&gt;\n&quot;)
+print(V)
+def objective(V,U,D): return sum([sum([sum([(D[i,j]-V[k,j])**2 for j in range(m)])*(U[i,k]**w) for k in range(c)]) for i in range(n)])
+Pt = objective(V,U,D)
+print(&quot;Pt &gt;&gt;\n&quot;)
+print(Pt)
+def converge(V,D,i,k): return (sum([(D[i,j]-V[k,j])**2 for j in range(2)])**(-1/(w-1)))/sum([sum([(D[i,j]-V[k,j])**2 for j in range(2)])**(-1/(w-1)) for k in range(2)])
+print(&quot;U &gt;&gt;\n&quot;)
+#np.array([[converge(V,D,i,k) for k in range(2)] for i in range(15)])
+def iterate(U):
+    V = np.array([[cluster(U, D, x, y) for x in range(m)] for y in range(c)])
+    return np.array([[converge(V,D,i,k) for k in range(c)] for i in range(n)]), objective(V,U,D)
+
+def fuzzyCM(U):
+    U = np.array([[random.uniform(0, 1) for _ in range(c)] for _ in range(n)])
+
+    U, P2, P, t = *iterate(U), 0, 1
+    while abs(P2 - P) &gt; e and t &lt; T:
+        U, P2, P, t = *iterate(U), P2, t+1
+    return U, t
+
+FuzzyResult, FuzzyIters = fuzzyCM(U)
+print(&quot;Iterating %d times, fuzzy result &gt;&gt; \n&quot; % FuzzyIters)
+print(FuzzyResult)
+
+table(calldata([D[i].tolist()+[np.argmax(FuzzyResult[i].tolist())] for i in range(15)], columns=Data.columns.tolist()+[&quot;Cluster Index&quot;]))
+
+
+</code></pre>
+
+<h5 id="hasil-run">Hasil Run:</h5>
+<pre><code>Table (D) &gt;&gt;
+Variables &gt;&gt;
+ n = 6
+ m = 5
+ c = 2
+ w = 2
+ T = 10
+ e = 0.100000
+ P0 = 0
+ t = 1
+U &gt;&gt;
+
+[[0.6394268  0.02501076]
+ [0.27502932 0.22321074]
+ [0.73647121 0.67669949]
+ [0.89217957 0.08693883]
+ [0.42192182 0.02979722]
+ [0.21863797 0.50535529]]
+V &gt;&gt;
+
+[[0.10251419 0.19701892 0.44578176 0.47658428 0.43585526]
+ [0.06380862 0.06682769 0.52281315 0.53336766 0.49281518]]
+Pt &gt;&gt;
+
+0.37014293691958705
+U &gt;&gt;
+
+Iterating 2 times, fuzzy result &gt;&gt; 
+
+[[0.8593773  0.1406227 ]
+ [0.11596106 0.88403894]
+ [0.02027774 0.97972226]
+ [0.82802879 0.17197121]
+ [0.51110547 0.48889453]
+ [0.27517007 0.72482993]]
+</code></pre></div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../js/base.js" defer></script>
+        <script src="../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form role="form">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="Keyboard Shortcuts Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Keyboard Shortcuts</h4>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
